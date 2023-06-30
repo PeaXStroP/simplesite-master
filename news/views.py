@@ -14,6 +14,7 @@ def news(request):
 
     return render(request, template_name='news/index.html', context=context)
 
+
 def show_news(request, post_id):
     current_news = News.objects.get(pk=post_id)
     cat = Category.objects.all()
@@ -22,6 +23,7 @@ def show_news(request, post_id):
         'cat': cat,
     }
     return render(request, template_name='news/show_news.html', context=context)
+
 
 def categories(request, category_id):
     cat_news = News.objects.filter(category=category_id)

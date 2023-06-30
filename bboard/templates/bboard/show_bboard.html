@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ current_cat.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Главная</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'news' %}">Новости</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'bboard' %}">Объявления</a>
+        </li>
+        <!--<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link disabled">Добавить Объявление</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Что искать..." aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Поиск</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="container-xl mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="list-group">
+                {% for cat in cat %}
+                <a href="{% url 'show_bboard' cat.id %}" class="list-group-item list-group-item-action" aria-current="true">{{ cat.title }}</a>
+              <!--<a href="#" class="list-group-item list-group-item-action">A second link item</a>-->
+              <!--<a class="list-group-item list-group-item-action disabled">A disabled link item</a>-->
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-8">
+            {% for item in current_bb %}
+            <div class="card mb-3 text-left">
+                <div class="card-header">Категория: {{ item.category }}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.content|truncatechars:300 }}</p>
+                </div>
+                <div class="card-footer text-body-secondary">Дата публикации: {{ item.publish_date|date:"H:i d:m:Y" }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-2">
+            <div class="card mb-3" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card mb-3" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card mb-3" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
