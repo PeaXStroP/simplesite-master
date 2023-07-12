@@ -55,13 +55,16 @@
         </div>
         <div class="col-lg-8">
             {% for item in current_bb %}
-            <div class="card mb-3 text-left">
-                <div class="card-header">Категория: {{ item.category }}</div>
+            <div class="card mb-3">
+                <img src="https://placehold.co/350x150" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.title }}</h5>
-                    <p class="card-text">{{ item.content|truncatechars:300 }}</p>
+                    <p class="card-text">{{ item.content }}</p>
+                    <p class="card-text"><small class="text-body-secondary">{{ item.price }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">{{ item.author }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">{{ item.created_at }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">{{ item.category }}</small></p>
                 </div>
-                <div class="card-footer text-body-secondary">Дата публикации: {{ item.publish_date|date:"H:i d:m:Y" }}</div>
             </div>
             {% endfor %}
         </div>
