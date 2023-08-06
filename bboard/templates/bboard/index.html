@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<!-- NAV START -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Главная</a>
@@ -43,9 +44,11 @@
         </div>
     </div>
 </nav>
+<!-- NAV END -->
 
 <div class="container-xl mt-5">
     <div class="row">
+<!-- CATEGORY START -->
         <div class="col">
             <div class="list-group">
                 {% for cat in cat %}
@@ -55,6 +58,9 @@
                 {% endfor %}
             </div>
         </div>
+<!-- CATEGORY END -->
+
+<!-- BOARD START -->
         <div class="col-lg-8">
             {% for item in bb %}
             <div class="card mb-3">
@@ -70,6 +76,9 @@
             </div>
             {% endfor %}
         </div>
+<!-- BOARD END -->
+
+<!-- ASIDE BLOCK START -->
         <div class="col-lg-2">
             <div class="card mb-3" style="width: 18rem;">
                 <div class="card-body">
@@ -93,6 +102,8 @@
                 </div>
             </div>
         </div>
+<!-- ASIDE BLOCK END -->
+
     </div>
 </div>
 
